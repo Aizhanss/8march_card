@@ -3,38 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>С 8 Марта!</title>
+    <title>Сюрприз!</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Поздравление -->
-        <div id="greeting" class="greeting">
-            <h1>С 8 Марта, дорогие подруги! ❤️</h1>
-            <p>Пусть этот день будет наполнен радостью, счастьем и улыбками!</p>
-            <button id="start-slideshow">✨ Нажми, чтобы увидеть сюрприз ✨</button>
-        </div>
 
-        <!-- Галерея с фото (скрыта) -->
-        <div id="gallery" class="gallery">
-            <img src="image1.JPG" class="slide">
-            <img src="image2.jpg" class="slide">
-            <img src="image3.JPG" class="slide">
-            <img src="image4.JPG" class="slide">
-            <img src="image5.JPG" class="slide">
-            <img src="image6.JPG" class="slide">
-            <img src="image7.JPG" class="slide">
-            <img src="image8.JPG" class="slide">
-            <img src="image9.JPG" class="slide">
-            <img src="image10.JPG" class="slide">
-        </div>
-    </div>
+    <h1>Моя открытка</h1>
 
-    <!-- Музыка -->
-    <audio id="background-music" autoplay loop>
-        <source src="music.mp3" type="audio/mp3">
+    <!-- Аудио -->
+    <audio id="backgroundMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио.
     </audio>
 
+    <!-- Текст поздравления -->
+    <div class="message">
+        <p>
+            <strong>Любимки</strong><br>
+            Поздравляю вас с 8 марта! Этот день – прекрасный повод напомнить, какие вы замечательные, добрые, искренние и неповторимые. 
+            Пусть ваша жизнь будет наполнена радостью, любовью и теплом, а рядом всегда будут люди, которые ценят и поддерживают вас.<br><br>
+            Желаю вам исполнения самых заветных желаний, пусть каждый день приносит счастье и улыбки. 
+            Пусть удача сопровождает вас во всех делах, а настроение всегда будет весенним и солнечным. 
+            Оставайтесь такими же прекрасными и вдохновляющими!<br><br>
+            С праздником, мои дорогие! Пусть этот день будет особенным и запоминающимся!
+        </p>
+    </div>
+
+    <!-- Кнопка запуска -->
+    <button class="surprise-btn" onclick="startSurprise()">Нажми на сюрприз!</button>
+
+    <!-- Галерея фото -->
+    <div class="gallery">
+        <img src="image1.JPG" class="hidden">
+        <img src="image2.jpg" class="hidden">
+        <img src="image3.JPG" class="hidden">
+        <img src="image4.JPG" class="hidden">
+        <img src="image5.JPG" class="hidden">
+        <img src="image6.JPG" class="hidden">
+        <img src="image7.JPG" class="hidden">
+        <img src="image8.JPG" class="hidden">
+        <img src="image9.JPG" class="hidden">
+        <img src="image10.JPG" class="hidden">
+        <img src="image11.JPG" class="hidden">
+        <img src="image12.JPG" class="hidden">
+        <img src="image13.JPG" class="hidden">
+        <img src="image14.JPG" class="hidden">
+        <img src="image15.JPG" class="hidden">
+        <img src="image16.JPG" class="hidden">
+        <img src="image17.jpg" class="hidden">
+        <img src="image18.jpg" class="hidden">
+    </div>
+
     <script src="script.js"></script>
+
 </body>
 </html>

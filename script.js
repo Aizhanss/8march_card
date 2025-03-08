@@ -1,50 +1,51 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let greeting = document.getElementById("greeting");
-    let gallery = document.getElementById("gallery");
-    let button = document.getElementById("start-slideshow");
-    let slides = document.querySelectorAll(".slide");
-    let music = document.getElementById("background-music");
+let images = document.querySelectorAll(".gallery img");
+let message = document.querySelector(".message");
+let button = document.querySelector(".surprise-btn");
+let music = document.getElementById("backgroundMusic");
+let currentIndex = 0;
 
-    button.addEventListener("click", function () {
-        greeting.style.opacity = "0"; // Исчезновение поздравления
-        setTimeout(function () {
-            greeting.style.display = "none";
-            gallery.style.display = "block";
+function startSurprise() {
+    button.style.opacity = "0"; // Кнопка исчезает плавно
+    setTimeout(() => button.style.display = "none", 1000);
 
-            let row = 0; // Счётчик рядов
-            let col = 0; // Счётчик колонок
-            let maxColumns = 3; // Сколько фото в одном ряду (можно изменить)
+    music.play();
+    message.style.transition = "opacity 2s"; 
+    message.style.opacity = "0"; // Исчезает поздравление
 
-            slides.forEach(function (slide, index) {
-                setTimeout(function () {
-                    try {
-                        let photoWidth = slide.width || 250; // Размер фото (по умолчанию 250px)
-                        let photoHeight = slide.height || 200; // Высота фото (по умолчанию 200px)
+    // Анимация сердечек
+    createHearts();
 
-                        let x = col * photoWidth; // Координата X (без отступов)
-                        let y = row * photoHeight; // Координата Y (без отступов)
+    setTimeout(() => {
+        message.style.display = "none";
+        showNextImage();
+    }, 2000);
+}
 
-                        slide.style.position = "absolute";
-                        slide.style.left = x + "px";
-                        slide.style.top = y + "px";
-                        slide.style.opacity = "1";
-                        slide.style.transition = "opacity 1.5s ease-in-out"; // Медленное появление
+function showNextImage() {
+    if (currentIndex < images.length) {
+        let img = images[currentIndex];
+        img.classList.remove("hidden");
+        img.style.opacity = "1"; // Фото остается видимым
+        img.style.animation = "fadeIn 2s ease-in-out";
+        currentIndex++;
+        setTimeout(showNextImage, 2500);
+    }
+}
 
-                        col++; // Увеличиваем колонку
-                        if (col >= maxColumns) { // Если колонок слишком много, переносим на новую строку
-                            col = 0;
-                            row++;
-                        }
-                    } catch (error) {
-                        console.error("Ошибка при установке позиции:", error);
-                    }
-                }, index * 2000); // Каждое фото появляется через 2 секунды (2000 мс)
-            });
-        }, 1000);
-    });
+// Функция создания сердечек
+function createHearts() {
+    let heartContainer = document.createElement("div");
+    heartContainer.classList.add("hearts");
+    document.body.appendChild(heartContainer);
 
-    // Включаем музыку, если браузер блокирует autoplay
-    document.body.addEventListener("click", function () {
-        music.play();
-    });
-});
+    for (let i = 0; i < 15; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+        heartContainer.appendChild(heart);
+    }
+
+    setTimeout(() => heartContainer.remove(), 4000); // Удаление после анимации
+}
